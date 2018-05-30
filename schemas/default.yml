@@ -1,0 +1,17 @@
+version: 1
+dependencies:
+  - wsid
+  - wsdate
+schema:
+  id: /DefaultMessage
+  type: object
+  properties:
+    kind:
+      type: string
+      maxLength: 6
+    source:
+      $ref: /WSID
+    moment:
+      $ref: /WSDate
+    args:
+      type: object 

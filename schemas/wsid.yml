@@ -1,0 +1,7 @@
+version: 1
+atomic: true
+schema:
+  id: /WSID
+  type: string
+  maxLength: 32
+  pattern: '^\w+{32}$'

@@ -4,4 +4,4 @@ schema:
   id: /WSID
   type: string
   maxLength: 32
-  pattern: '^\w+{32}$'
+  pattern: '^\w{32}$'

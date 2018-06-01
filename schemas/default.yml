@@ -15,3 +15,7 @@ schema:
       $ref: /WSDate
     args:
       type: object 
+  required:
+    - kind
+    - source
+    - moment

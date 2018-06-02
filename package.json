@@ -1,11 +1,10 @@
 {
   "name": "wizzy",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "WebSocket Generic Server",
   "main": "index.js",
   "author": "Michael Chacaton <mchacaton@chaksoft.eu>",
   "license": "UNLICENSED",
-  "private": true,
   "dependencies": {
     "bufferutil": "^3.0.5",
     "bunyan": "^1.8.12",
@@ -25,5 +24,9 @@
   "scripts": {
     "lint": "cross-env eslint app.js config/*.js plugins/**/*.js lib/*.js",
     "test": "yarn lint && cross-env NODE_ENV=test jest --detectOpenHandles tests/*.spec.js"
+  },
+  "repository": {
+    "url": "https://github.com/ChakSoft/wizzy-server",
+    "type": "git"
   }
 }

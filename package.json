@@ -2,12 +2,13 @@
   "name": "wizzy",
   "version": "1.0.0",
   "description": "WebSocket Generic Server",
-  "main": "app.js",
+  "main": "index.js",
   "author": "Michael Chacaton <mchacaton@chaksoft.eu>",
   "license": "UNLICENSED",
   "private": true,
   "dependencies": {
     "bufferutil": "^3.0.5",
+    "bunyan": "^1.8.12",
     "jsonschema": "^1.2.4",
     "moment": "^2.22.2",
     "ws": "^5.2.0"
@@ -23,6 +24,6 @@
   },
   "scripts": {
     "lint": "cross-env eslint app.js config/*.js plugins/**/*.js lib/*.js",
-    "test": "yarn lint && cross-env NODE_ENV=test jest --forceExit tests/*.spec.js"
+    "test": "yarn lint && cross-env NODE_ENV=test jest --detectOpenHandles tests/*.spec.js"
   }
 }

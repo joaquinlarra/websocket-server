@@ -1,6 +1,6 @@
 Wizzy Websocket Server:
-  ☐ Use a proper logger
+  ✔ Use a proper logger @done(18-06-02 19:25)
   ✔ Create module base mandatory class @done(18-06-02 11:37)
   ☐ Ensure there is no memory leak on usage
-  ☐ Implement middleware handlers
-  ☐ Custom properties at login initialization
+  ✔ Implement middleware handlers @done(18-06-02 20:29)
+  ✔ Custom properties at login initialization @done(18-06-02 19:04)

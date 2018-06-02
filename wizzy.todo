@@ -3,3 +3,4 @@ Wizzy Websocket Server:
   ✔ Create module base mandatory class @done(18-06-02 11:37)
   ☐ Ensure there is no memory leak on usage
   ☐ Implement middleware handlers
+  ☐ Custom properties at login initialization

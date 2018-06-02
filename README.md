@@ -2,38 +2,87 @@
 
 ## Installation
 
+### Using NPM
+
 ```bash
-$ npm install -g wizzy
+$ npm install wizzy
 ```
 
-## Configuration
+### Using Yarn
 
-You will have several methods to configure the websocket server.
-
-### Configure with NODE_ENV
-
-For example, if you are running as `NODE_ENV=development`, you can add a `development.js` file in the `config` folder in order to override configuration keys.
-
-### Configure with environment variables
-
-You can also use these environment variables that are read by default by the app :
-
-| Variable         | Role                                           |
-| ---------------- | ---------------------------------------------- |
-| `WIZZY_WS_PORT`  | Port on which the websocket server will listen |
-| `WIZZY_SSL_CERT` | Path to the SSL certificate file               |
-| `WIZZY_SSL_KEY`  | Path to the SSL key file                       |
-
-> The specification for JSON schemas can be found on [this site](https://spacetelescope.github.io/understanding-json-schema/index.html).
-
-You can also find default schemas inside the `schemas` folder of this application.
+```bash
+$ yarn add wizzy
+```
 
 ## Usage
 
-```bash
-WIZZY_WS_PORT=4999 wizzy
+```javascript
+const WizzyServer = require('wizzy')
+const server = new WizzyServer({
+  port: 8081,
+})
+server.start()
 ```
 
-By running this command, you will run the app by setting the port to `4999` and the schemas dir to `/home/mchacaton/wizzy_schemas`. So you can start to send messages to it at `ws://localhost:4999`.
+Your websocket server is ready to listen on connections.
 
-If you want to use SSL, you will need SSL certificates as with Let's Encrypt or another Certification Authority and add them to the configuration or to the environment variables.
+## Messages
+
+Every message is JSON-formatted and must contain a `kind` property. This property will let the server know what plugin it must use to handle the message.
+
+## Plugins
+
+To make the websocket server do things, you will have to add _plugins_. Create a `plugins` directory on your root app folder and you are ready to write a plugin.
+
+### Plugin Hello World example
+
+`plugins/hello-world/index.js`
+
+```javascript
+'use strict'
+
+const WizzyPlugin = require('wizzy/lib/plugin')
+
+class HelloWorldPlugin extends WizzyPlugin {
+  _run(ws) {
+    ws.sendMessage('hello', {
+      text: 'Hello World !',
+    })
+  }
+}
+
+module.exports = HelloWorldPlugin
+```
+
+This plugin will send a JSON formatted object with a `text` property containing the string `Hello World !` whenever it receives a message.
+
+### Register the plugin
+
+To register the plugin, you must add it to the server options constructor object.
+
+```javascript
+const WizzyServer = require('wizzy')
+const server = new WizzyServer({
+  port: 8081,
+  plugins: [
+    {
+      name: 'Hello World Plugin',
+      module: 'hello-world',
+      kinds: ['hello'],
+      global: false,
+    },
+  ],
+})
+server.start()
+```
+
+There are four properties for your plugin :
+
+| Property | Description                                                                                                                                    |
+| -------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
+| `name`   | Name of the plugin. Can be whatever you want and has not to be unique.                                                                         |
+| `module` | Name of the plugin module. Must be the same as the plugin folder name (case-sensitive)                                                         |
+| `kinds`  | Array of values matching with this plugin. If the `kind` property of the incoming message is one of these, the plugin will handle the message. |
+| `global` | Boolean value to make the plugin trigger on every message whatever the value of the `kind` property.                                           |
+
+> If `kinds` is an empty array, the plugin will be loaded with a warning and will never be triggered. If you want a plugin to be triggered to every message, set `global` to `true`.

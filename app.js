@@ -1,20 +1,17 @@
 'use strict'
 
-const WebSocket = require('ws')
-const Config = require('config')
-const parser = require('./lib/parser')
+const WizzyServer = require('./lib/server')
 
-const server = new WebSocket.Server({
-  port : Config.get('wsPort'),
-})
-server.on('connection', (ws) => {
-  ws.sendMessage = function(kind, value = {}) {
-    this.send(
-      JSON.stringify({
-        kind,
-        ...value,
-      })
-    )
-  }
-  ws.on('message', parser(ws))
-})
+if (module.parent) {
+  module.exports = WizzyServer
+} else {
+  new WizzyServer({
+    plugins: [
+      {
+        name: 'Hello World',
+        module: 'hello-world',
+        kinds: ['hello']
+      }
+    ]
+  }).start()
+}

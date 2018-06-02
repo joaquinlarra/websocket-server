@@ -18,12 +18,11 @@ For example, if you are running as `NODE_ENV=development`, you can add a `develo
 
 You can also use these environment variables that are read by default by the app :
 
-| Variable | Role |
-| -------- | ---- |
-| `WIZZY_WS_PORT` | Port on which the websocket server will listen |
-| `WIZZY_SCHEMAS_DIR` | Directory of the message JSON schemas |
-| `WIZZY_SSL_CERT` | Path to the SSL certificate file |
-| `WIZZY_SSL_KEY` | Path to the SSL key file |
+| Variable         | Role                                           |
+| ---------------- | ---------------------------------------------- |
+| `WIZZY_WS_PORT`  | Port on which the websocket server will listen |
+| `WIZZY_SSL_CERT` | Path to the SSL certificate file               |
+| `WIZZY_SSL_KEY`  | Path to the SSL key file                       |
 
 > The specification for JSON schemas can be found on [this site](https://spacetelescope.github.io/understanding-json-schema/index.html).
 
@@ -32,7 +31,7 @@ You can also find default schemas inside the `schemas` folder of this applicatio
 ## Usage
 
 ```bash
-WIZZY_WS_PORT=4999 WIZZY_SCHEMAS_DIR=/home/mchacaton/wizzy_schemas wizzy
+WIZZY_WS_PORT=4999 wizzy
 ```
 
 By running this command, you will run the app by setting the port to `4999` and the schemas dir to `/home/mchacaton/wizzy_schemas`. So you can start to send messages to it at `ws://localhost:4999`.

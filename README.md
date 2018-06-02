@@ -5,19 +5,19 @@
 ### Using NPM
 
 ```bash
-$ npm install wizzy
+$ npm install wizzy-server
 ```
 
 ### Using Yarn
 
 ```bash
-$ yarn add wizzy
+$ yarn add wizzy-server
 ```
 
 ## Usage
 
 ```javascript
-const WizzyServer = require('wizzy')
+const WizzyServer = require('wizzy-server')
 const server = new WizzyServer({
   port: 8081,
 })
@@ -41,7 +41,7 @@ To make the websocket server do things, you will have to add _plugins_. Create a
 ```javascript
 'use strict'
 
-const WizzyPlugin = require('wizzy/lib/plugin')
+const WizzyPlugin = require('wizzy-server/lib/plugin')
 
 class HelloWorldPlugin extends WizzyPlugin {
   _run(ws) {
@@ -61,7 +61,7 @@ This plugin will send a JSON formatted object with a `text` property containing 
 To register the plugin, you must add it to the server options constructor object.
 
 ```javascript
-const WizzyServer = require('wizzy')
+const WizzyServer = require('wizzy-server')
 const server = new WizzyServer({
   port: 8081,
   plugins: [
@@ -95,7 +95,7 @@ You can also add properties to your plugin, by setting
 The Wizzy Server is bundling a fully configured Bunyan logger. You can access it by use the `.logger` property of the server instance.
 
 ```javascript
-const WizzyServer = require('wizzy')
+const WizzyServer = require('wizzy-server')
 const server = new WizzyServer({
   port: 8081,
   plugins: [

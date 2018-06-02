@@ -1,5 +1,5 @@
 {
-  "name": "wizzy",
+  "name": "wizzy-server",
   "version": "0.0.3",
   "description": "WebSocket Generic Server",
   "main": "index.js",

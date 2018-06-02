@@ -1,10 +1,10 @@
 {
   "name": "wizzy",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "WebSocket Generic Server",
   "main": "index.js",
   "author": "Michael Chacaton <mchacaton@chaksoft.eu>",
-  "license": "UNLICENSED",
+  "license": "GPL-3.0",
   "dependencies": {
     "bufferutil": "^3.0.5",
     "bunyan": "^1.8.12",

@@ -1,6 +1,6 @@
 {
   "name": "wizzy-server",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "WebSocket Generic Server",
   "main": "index.js",
   "author": "Michael Chacaton <mchacaton@chaksoft.eu>",

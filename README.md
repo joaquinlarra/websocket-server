@@ -1,4 +1,4 @@
-# Wizzy - Your custom websocket server
+# Websocket Server
 
 ## Installation
 
